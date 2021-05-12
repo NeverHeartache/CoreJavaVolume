@@ -19,7 +19,7 @@ public class IOProxy {
         this.outputStream = out;
     }
 
-    public void readTxt(String inFilePath, String outFilePath) throws IOException{
+    public void byteCopy(String inFilePath, String outFilePath) throws IOException{
         try {
             int c;
             fileInputStream = new FileInputStream(inFilePath);
@@ -43,13 +43,41 @@ public class IOProxy {
         }
     }
 
+    public void charactersCopy(String inputFile, String outputFile) throws IOException{
+        FileReader inputStream = null;
+        FileWriter outputStream = null;
+        inputFile = "E:\\GitHubRepo\\CoreJavaVolume\\inputoutput\\src\\main\\resources\\xanadu.txt";
+        outputFile = "E:\\GitHubRepo\\CoreJavaVolume\\inputoutput\\src\\main\\resources\\characteroutput.txt";
+        try {
+            inputStream = new FileReader(inputFile);
+            outputStream = new FileWriter(outputFile);
+
+            int c;
+            while ((c = inputStream.read()) != -1) {
+                outputStream.write(c);
+            }
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         String inputFile = "E:\\GitHubRepo\\CoreJavaVolume\\inputoutput\\src\\main\\resources\\readme.txt";
         String outputFile = "E:\\GitHubRepo\\CoreJavaVolume\\inputoutput\\src\\main\\resources\\output.txt";
         IOProxy ioProxy = new IOProxy();
+//        try {
+//            ioProxy.byteCopy(inputFile, outputFile);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         try {
-            ioProxy.readTxt(inputFile, outputFile);
-        } catch (IOException e) {
+            ioProxy.charactersCopy("", "");
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
