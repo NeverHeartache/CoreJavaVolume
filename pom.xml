@@ -12,6 +12,8 @@
     <modules>
         <module>inputoutput</module>
         <module>concurrent</module>
+        <module>algorithm</module>
+        <module>basicdesign</module>
     </modules>
 
     <properties>

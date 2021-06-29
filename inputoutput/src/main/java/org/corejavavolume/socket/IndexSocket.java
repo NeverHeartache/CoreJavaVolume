@@ -13,7 +13,7 @@ public class IndexSocket {
         if(tmpFile.exists()){
             tmpFile.delete();
         }
-        try (Socket socket = new Socket("www.walltu.com",443);
+        try (Socket socket = new Socket("www.baidu.com",443);
              Scanner sc = new Scanner(socket.getInputStream(), "UTF-8");
 //             InputStream in = socket.getInputStream();
 //             OutputStream out = new FileOutputStream("wallwrapper.txt")
