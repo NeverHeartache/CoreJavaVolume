@@ -11,8 +11,22 @@ import java.util.Scanner;
 public class PrimaryIO {
     private String environment = "F:\\spiderfile\\";
 
+    public String getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(String environment) {
+        this.environment = environment;
+    }
+
     public static void main(String[] args) throws IOException {
-        printFileInLine("picsFile.html");
+        PrimaryIO primaryIO = new PrimaryIO();
+
+//        printFileInLine("picsFile.html");
+        String outFile = primaryIO.getEnvironment() + "picsFile.html";
+        System.out.println("--------------------");
+        URL url = new URL("https://www.williamlong.info/archives/6007.html");
+        pullWebPageIntoLocal(url, outFile);
     }
 
     private static void printFileInLine(String fileName) throws IOException {
@@ -22,17 +36,22 @@ public class PrimaryIO {
             System.out.println(in.nextLine());
             String sIndex = in.findInLine("img");
         }
+        System.out.println("-----------------");
+
     }
 
     private static void pullWebPageIntoLocal(URL url, String outFile) throws IOException{
-        try (InputStream in = url.openStream()){
+        try (InputStream in = url.openStream();
+             PrintWriter out = new PrintWriter(outFile, "UTF-8");){
             Scanner scanner = new Scanner(in);
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                System.out.println(line);
+//                System.out.println(line);
+                out.println(line);
             }
-            PrintWriter out = new PrintWriter(outFile, "UTF-8");
-            FileOutputStream outputStream = new FileOutputStream("");//TODO
+            out.flush();
+//            FileOutputStream outputStream = new FileOutputStream("");//TODO
         }
     }
 }
