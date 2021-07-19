@@ -25,7 +25,7 @@ public class PrimaryIO {
 //        printFileInLine("picsFile.html");
         String outFile = primaryIO.getEnvironment() + "picsFile.html";
         System.out.println("--------------------");
-        URL url = new URL("https://www.williamlong.info/archives/6007.html");
+        URL url = new URL("https://23seaa.com/vodplayhtml/84318.html");
         pullWebPageIntoLocal(url, outFile);
     }
 

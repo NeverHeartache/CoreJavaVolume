@@ -14,6 +14,7 @@
         <module>concurrent</module>
         <module>algorithm</module>
         <module>basicdesign</module>
+        <module>gui4design</module>
     </modules>
 
     <properties>
