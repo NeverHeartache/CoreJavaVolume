@@ -9,12 +9,12 @@ public class SimpleFrameTest  {
             SimpleFrame frame = new SimpleFrame();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             System.out.println(frame.getTitle());
-            frame.setLocationByPlatform(true);
+//            frame.setLocationByPlatform(true);
             frame.setVisible(true);
             try{
                 Thread.sleep(2000);
                 frame.setVisible(false);
-                frame.setLocationByPlatform(true);
+//                frame.setLocationByPlatform(true);
                 frame.setVisible(true);
             } catch (InterruptedException e){
                 e.printStackTrace();
@@ -24,14 +24,16 @@ public class SimpleFrameTest  {
 }
 
 class SimpleFrame extends JFrame {
-    private static final int DEFAULT_WIDTH = 300;
-    private static final int DEFAULT_HEIGHT = 200;
     private static final int X_POSITION = 500;
     private static final int Y_POSITION = 100;
     public SimpleFrame(){
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension dimension = toolkit.getScreenSize();
+        int screenWidth = dimension.width;
+        int screenHeight = dimension.height;
+        setSize(screenWidth, screenHeight);
         setTitle("示例框架");
-        setLocation(X_POSITION, Y_POSITION);
+//        setLocation(X_POSITION, Y_POSITION);
     }
 }
 
