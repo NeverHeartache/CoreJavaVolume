@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
 
+/**
+ * 在应用上画一个空白坐标系
+ */
 public class Draw2DLine {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
