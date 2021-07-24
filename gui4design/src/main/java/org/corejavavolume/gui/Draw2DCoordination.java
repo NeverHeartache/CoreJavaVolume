@@ -7,7 +7,7 @@ import java.awt.geom.Line2D;
 /**
  * 在应用上画一个空白坐标系
  */
-public class Draw2DLine {
+public class Draw2DCoordination {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             JFrame frame = new CoordinateFrame();

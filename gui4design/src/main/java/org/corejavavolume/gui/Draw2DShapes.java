@@ -9,7 +9,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * 根据例子，画椭圆，举行，线段，园
  */
-public class Draw2D {
+public class Draw2DShapes {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             DrawFrame frame = new DrawFrame();
