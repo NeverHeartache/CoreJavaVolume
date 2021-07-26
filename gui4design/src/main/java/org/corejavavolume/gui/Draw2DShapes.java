@@ -51,6 +51,10 @@ class DrawComponent extends JComponent {
         Line2D line = new Line2D.Float(leftX, topY, leftX+width, topY+height);
         graphics2D.draw(line);
 
+        //another line
+        Line2D oLine = new Line2D.Float(leftX, topY + height, leftX+width, topY);
+        graphics2D.draw(oLine);
+
         //draw a circle with the same center
         double centerX = rect.getCenterX();
         double centerY = rect.getCenterY();
