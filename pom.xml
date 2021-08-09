@@ -15,6 +15,7 @@
         <module>algorithm</module>
         <module>basicdesign</module>
         <module>gui4design</module>
+        <module>InterfaceLambdaInnerClass</module>
     </modules>
 
     <properties>
