@@ -7,6 +7,12 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * https://v.qq.com/x/page/f3015penhto.html
+ * 国医邓铁涛老爷子视频
+ *
+ * 类B引用类A的内部类，进行测试
+ */
 public class UseOtherInnerClass {
     public static void main(String[] args) {
         EventQueue.invokeLater(()-> {
