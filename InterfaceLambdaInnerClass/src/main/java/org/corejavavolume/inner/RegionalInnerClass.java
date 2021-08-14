@@ -37,12 +37,14 @@ class TalkingClock4Regional {
                 }
             }
         }
-        ActionListener actionListener = (e)->{
-            System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            if (beep){
-                Toolkit.getDefaultToolkit().beep();
-            }
-        };
+//        可以正常使用lambda表达式
+//        ActionListener actionListener = (e)->{
+//            System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+//            if (beep){
+//                Toolkit.getDefaultToolkit().beep();
+//            }
+//        };
+        ActionListener actionListener = new TimePrinter4Regional();
         Timer timer = new Timer(interval, actionListener);
         timer.start();
     }
