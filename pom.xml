@@ -16,6 +16,7 @@
         <module>basicdesign</module>
         <module>gui4design</module>
         <module>InterfaceLambdaInnerClass</module>
+        <module>inherited</module>
     </modules>
 
     <properties>
