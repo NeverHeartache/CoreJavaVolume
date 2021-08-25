@@ -4,6 +4,8 @@ import org.aspectj.asm.IProgramElement;
 
 import javax.swing.*;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class ReflectTest {
@@ -17,16 +19,35 @@ public class ReflectTest {
         return className;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
     public static void printField(Class clazz){
-
+        Field[] fields = clazz.getFields();
+        for (Field f:fields) {
+            Class type = f.getType();
+            String name = f.getName();
+            System.out.print("  ");
+            String modifiers = Modifier.toString(f.getModifiers());
+            if (modifiers.length() > 0) System.out.print(modifiers + " ");
+            System.out.println(type + " " + name + ";");
+        }
     }
 
     public static void printMethod(Class clazz){
-
+        Method[] methods = clazz.getMethods();
+        for (Method m: methods) {
+            Class retType = m.getReturnType();
+            String name = m.getName();
+            System.out.print("  ");
+            //print modifiers
+            String modifiers = Modifier.toString(m.getModifiers());
+            if (modifiers.length() > 0) System.out.print(modifiers + " ");
+            System.out.print(retType.getName() + " " + name + "(");
+            Class[] paramTypes = m.getParameterTypes();
+            for (int i = 0; i < paramTypes.length; i++) {
+                if (i > 0) System.out.print(",");
+                System.out.print(paramTypes[i].getName());
+            }
+            System.out.println(");");
+        }
     }
 
     public static void printConstructor(Class clazz){
@@ -36,8 +57,14 @@ public class ReflectTest {
             System.out.print("  ");
             String modifiers = Modifier.toString(c.getModifiers());
             if (modifiers.length() > 0) System.out.print(modifiers + " ");
-            System.out.print(name + " ");
-
+            System.out.print(name + "(");
+            //print paramteter types
+            Class[] paramTypes = c.getParameterTypes();
+            for (int i = 0; i < paramTypes.length; i++) {
+                if (i > 0) System.out.print(",");
+                System.out.print(paramTypes[i].getName());
+            }
+            System.out.println(");");
         }
     }
 
