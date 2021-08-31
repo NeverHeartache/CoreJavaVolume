@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gui4design</artifactId>
+    <artifactId>scriptcompileannotation208</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.corejavavolume</groupId>
-            <artifactId>scriptcompileannotation208</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

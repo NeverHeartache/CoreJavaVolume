@@ -17,6 +17,7 @@
         <module>gui4design</module>
         <module>InterfaceLambdaInnerClass</module>
         <module>inherited</module>
+        <module>scriptcompileannotation208</module>
     </modules>
 
     <properties>

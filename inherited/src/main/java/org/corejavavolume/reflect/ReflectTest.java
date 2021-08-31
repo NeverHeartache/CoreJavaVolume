@@ -1,7 +1,5 @@
 package org.corejavavolume.reflect;
 
-import org.aspectj.asm.IProgramElement;
-
 import javax.swing.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
