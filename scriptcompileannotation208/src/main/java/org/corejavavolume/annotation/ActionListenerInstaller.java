@@ -26,6 +26,7 @@ public class ActionListenerInstaller {
 
     public static void addListener(Object source, final Object param, final Method m)
             throws ReflectiveOperationException {
+        //此处应该是匿名内部类？
         InvocationHandler handler = new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -33,6 +34,14 @@ public class ActionListenerInstaller {
                 return m.invoke(param);
             }
         };
+        /*
+        //lambda 表达式也可以
+        InvocationHandler handler = (proxy, method, args) -> {
+            System.out.println("Run with lambda expression.");
+            m.setAccessible(true);//示例中没有这句代码
+            return m.invoke(param);
+        };
+         */
         Object listener = Proxy.newProxyInstance(null, new Class[]{
                 java.awt.event.ActionListener.class
         }, handler);
