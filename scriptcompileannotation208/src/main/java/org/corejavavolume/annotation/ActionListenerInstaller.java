@@ -29,6 +29,7 @@ public class ActionListenerInstaller {
         InvocationHandler handler = new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                m.setAccessible(true);//示例中没有这句代码
                 return m.invoke(param);
             }
         };
