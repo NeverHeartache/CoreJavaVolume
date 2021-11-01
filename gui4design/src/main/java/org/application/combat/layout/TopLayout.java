@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class TopLayout extends JFrame {
     public TopLayout() {
-
+        setTitle("HomePage");
+        setLocationByPlatform(true);
     }
 }
