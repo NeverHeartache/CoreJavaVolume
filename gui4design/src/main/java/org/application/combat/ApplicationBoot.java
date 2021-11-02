@@ -15,6 +15,7 @@ public class ApplicationBoot {
         EventQueue.invokeLater(() -> {
             JFrame homeFrame = new TopLayout();
             homeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            homeFrame.setVisible(true);
         });
     }
 }
