@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class TopLayout extends JFrame {
     private static JMenuBar jMenuBar;
@@ -12,7 +15,8 @@ public class TopLayout extends JFrame {
     private static int frameHeight;
     private static Toolkit sysToolkit;
     private static SimpleDateFormat sdf;
-    private static Timer timer;
+    private static Timer realTimeTimer;
+    private static TimerTask realTimeTimerTask;
     public TopLayout() {
         init();
         setSize(frameWidth, frameHeight);
@@ -30,7 +34,8 @@ public class TopLayout extends JFrame {
         frameHeight = sysDimension.height / 2;
         frameWidth = sysDimension.width / 2;
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        timer = new Timer(1000, null);
+        realTimeTimer = new Timer("second", false);
+
     }
 
     public static JMenuBar addMenu(JFrame jFrame) {
@@ -54,9 +59,12 @@ public class TopLayout extends JFrame {
         JLabel timeLabel = new JLabel();
         botmJPanel.add(timeLabel);
         timeLabel.setText(sdf.format(new Date()));
-        timer.addActionListener(event -> {
-            System.out.println(sdf.format(new Date()));
-            timeLabel.setText(sdf.format(new Date()));
-        });
+        realTimeTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                timeLabel.setText(sdf.format(new Date()));
+            }
+        };
+        realTimeTimer.scheduleAtFixedRate(realTimeTimerTask, new Date(), 1000);
     }
 }
