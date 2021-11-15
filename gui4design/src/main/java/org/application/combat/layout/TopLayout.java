@@ -3,9 +3,8 @@ package org.application.combat.layout;
 import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class TopLayout extends JFrame {
@@ -25,14 +24,14 @@ public class TopLayout extends JFrame {
         // Menu
         addMenu(this);
         // text JPanel
-        addTimeLabelOfBottom(this);
+        addTimeLabelOfCenter(this);
     }
 
     private static void init(){
         sysToolkit = Toolkit.getDefaultToolkit();
         sysDimension = sysToolkit.getScreenSize();
-        frameHeight = sysDimension.height / 2;
-        frameWidth = sysDimension.width / 2;
+        frameHeight = sysDimension.height /2;
+        frameWidth = sysDimension.width /2;
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         realTimeTimer = new Timer("second", false);
 
@@ -53,10 +52,11 @@ public class TopLayout extends JFrame {
         return jMenuBar;
     }
 
-    public static void addTimeLabelOfBottom(JFrame jFrame) {
+    public void addTimeLabelOfCenter(JFrame jFrame) {
         JPanel botmJPanel = new JPanel();
         jFrame.add(botmJPanel, BorderLayout.SOUTH);
-        JLabel timeLabel = new JLabel();
+
+        JLabel timeLabel = new TimeLabel();
         botmJPanel.add(timeLabel);
         timeLabel.setText(sdf.format(new Date()));
         realTimeTimerTask = new TimerTask() {
@@ -66,5 +66,45 @@ public class TopLayout extends JFrame {
             }
         };
         realTimeTimer.scheduleAtFixedRate(realTimeTimerTask, new Date(), 1000);
+    }
+
+//    public void draw
+
+    class TimeLabel extends JLabel {
+
+        public void paintComponent(Graphics graphics) {
+            Graphics2D graphics2D = (Graphics2D) graphics;
+            Font timeLabelFont = new Font("微软雅黑 Light", Font.BOLD, 18);
+            graphics2D.setFont(timeLabelFont);
+            graphics2D.drawString(getText(), 160, 20);
+        }
+
+        public Dimension getPreferredSize(){
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension dimension = toolkit.getScreenSize();
+            dimension.setSize(dimension.width / 4, 50);
+            return dimension;
+        }
+    }
+
+    /**
+     * 随机获取字体
+     * @return 字体
+     */
+    private String getRandomFont(){
+        String font = new String();
+        String[] fontList = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+        Random random = new Random();
+        return fontList[random.nextInt(fontList.length)];
+    }
+
+    /**
+     * 查看本地所有字体
+     */
+    private void listAllLocalFont(){
+        String[] fontList = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+        Arrays.stream(fontList).forEach(p -> {
+            System.out.println(p);
+        });
     }
 }
