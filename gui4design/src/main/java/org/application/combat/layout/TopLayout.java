@@ -18,11 +18,13 @@ public class TopLayout extends JFrame {
     private static TimerTask realTimeTimerTask;
     public TopLayout() {
         init();
-        setSize(frameWidth, frameHeight);
         setTitle("HomePage");
-        setLocationByPlatform(true);
+        setSize(frameWidth, frameHeight);
+        setLocation(0,0);
         // Menu
         addMenu(this);
+        //setup time
+        addBootTimeLable(this);
         // text JPanel
         addTimeLabelOfCenter(this);
     }
@@ -30,11 +32,10 @@ public class TopLayout extends JFrame {
     private static void init(){
         sysToolkit = Toolkit.getDefaultToolkit();
         sysDimension = sysToolkit.getScreenSize();
-        frameHeight = sysDimension.height /2;
-        frameWidth = sysDimension.width /2;
+        frameHeight = sysDimension.height;
+        frameWidth = sysDimension.width;
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         realTimeTimer = new Timer("second", false);
-
     }
 
     public static JMenuBar addMenu(JFrame jFrame) {
@@ -66,6 +67,10 @@ public class TopLayout extends JFrame {
             }
         };
         realTimeTimer.scheduleAtFixedRate(realTimeTimerTask, new Date(), 1000);
+    }
+
+    public void addBootTimeLable(JFrame jFrame) {
+
     }
 
 //    public void draw
