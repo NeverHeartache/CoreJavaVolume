@@ -29,7 +29,7 @@ public class TopLayout extends JFrame {
         addTimeLabelOfCenter(this);
     }
 
-    private static void init(){
+    private void init(){
         sysToolkit = Toolkit.getDefaultToolkit();
         sysDimension = sysToolkit.getScreenSize();
         frameHeight = sysDimension.height;
@@ -38,7 +38,7 @@ public class TopLayout extends JFrame {
         realTimeTimer = new Timer("second", false);
     }
 
-    public static JMenuBar addMenu(JFrame jFrame) {
+    public JMenuBar addMenu(JFrame jFrame) {
         jMenuBar = new JMenuBar();
         jFrame.setJMenuBar(jMenuBar);
         jMenuBar.setSize(frameWidth, 20);

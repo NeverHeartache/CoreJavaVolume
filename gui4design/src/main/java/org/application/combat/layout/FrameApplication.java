@@ -6,30 +6,42 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class FrameProxy {
-
-    private JFrame jFrame;
-
-    private Toolkit toolkit;
-
-    private SystemTray systemTray;
+public class FrameApplication {
 
     /**
      * 框架休眠时间
      */
-    private long sleepPeriod = 1000 * 60 * 50;
+    private final long SLEEP_DELAY = 1000 * 60 * 50;
 
     /**
      * 框架展示显示时间
      */
-    private long showDelay = 1000 * 60 * 10;
+    private final long SHOW_DELAY = 1000 * 60 * 10;
 
     /**
      * 展示之后，窗口隐藏；
      */
-    private long hidePeriod = 1000 * 5;
+    private final long HIDE_DELAY = 1000 * 5;
 
-    public FrameProxy() {
+    /**
+     * 全局框架
+     */
+    private TopLayout jFrame;
+
+    /**
+     * 系统工具箱
+     */
+    private Toolkit toolkit;
+
+    /**
+     * 系统托盘
+     */
+    private SystemTray systemTray;
+
+    /**
+     * 构造函数，初始化
+     */
+    public FrameApplication() {
         jFrame = new TopLayout();
         toolkit = Toolkit.getDefaultToolkit();
         if (SystemTray.isSupported()) {
@@ -59,13 +71,13 @@ public class FrameProxy {
                 try {
                     //展示一次
                     jFrame.setVisible(true);
-                    Thread.sleep(hidePeriod);//展示一段时间，5S
+                    Thread.sleep(HIDE_DELAY);//展示一段时间，5S
                     jFrame.setVisible(false);
                     // 睡10分钟
-                    Thread.sleep(showDelay);
+                    Thread.sleep(SHOW_DELAY);
                     //展示一次
                     jFrame.setVisible(true);
-                    Thread.sleep(hidePeriod);//展示一段时间，5S
+                    Thread.sleep(HIDE_DELAY);//展示一段时间，5S
                     jFrame.setVisible(false);
                 } catch (InterruptedException e) {
                     jFrame.setVisible(true);
@@ -73,6 +85,6 @@ public class FrameProxy {
                 }
             }
         };
-        frameVisibleTimer.scheduleAtFixedRate(frameTimerTask, new Date(), sleepPeriod);
+        frameVisibleTimer.scheduleAtFixedRate(frameTimerTask, new Date(), SLEEP_DELAY);
     }
 }
