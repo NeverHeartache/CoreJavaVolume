@@ -5,23 +5,9 @@ import java.awt.*;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import org.application.combat.constant.ApplicationConst;
 
 public class FrameApplication {
-
-    /**
-     * 框架休眠时间
-     */
-    private final long SLEEP_DELAY = 1000 * 60 * 50;
-
-    /**
-     * 框架展示显示时间
-     */
-    private final long SHOW_DELAY = 1000 * 60 * 10;
-
-    /**
-     * 展示之后，窗口隐藏；
-     */
-    private final long HIDE_DELAY = 1000 * 5;
 
     /**
      * 全局框架
@@ -71,13 +57,13 @@ public class FrameApplication {
                 try {
                     //展示一次
                     jFrame.setVisible(true);
-                    Thread.sleep(HIDE_DELAY);//展示一段时间，5S
+                    Thread.sleep(ApplicationConst.HIDE_DELAY);//展示一段时间，5S
                     jFrame.setVisible(false);
                     // 睡10分钟
-                    Thread.sleep(SHOW_DELAY);
+                    Thread.sleep(ApplicationConst.SHOW_DELAY);
                     //展示一次
                     jFrame.setVisible(true);
-                    Thread.sleep(HIDE_DELAY);//展示一段时间，5S
+                    Thread.sleep(ApplicationConst.HIDE_DELAY);//展示一段时间，5S
                     jFrame.setVisible(false);
                 } catch (InterruptedException e) {
                     jFrame.setVisible(true);
@@ -85,6 +71,6 @@ public class FrameApplication {
                 }
             }
         };
-        frameVisibleTimer.scheduleAtFixedRate(frameTimerTask, new Date(), SLEEP_DELAY);
+        frameVisibleTimer.scheduleAtFixedRate(frameTimerTask, new Date(), ApplicationConst.SLEEP_DELAY);
     }
 }
