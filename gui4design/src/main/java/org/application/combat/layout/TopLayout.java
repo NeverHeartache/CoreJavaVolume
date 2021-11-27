@@ -9,31 +9,18 @@ import java.util.Timer;
 
 public class TopLayout extends JFrame {
     private static JMenuBar jMenuBar;
-    private static Dimension sysDimension;
-    private static int frameWidth;
-    private static int frameHeight;
-    private static Toolkit sysToolkit;
     private static SimpleDateFormat sdf;
     private static Timer realTimeTimer;
     private static TimerTask realTimeTimerTask;
-    public TopLayout() {
-        init();
-        setTitle("HomePage");
+
+    public TopLayout(String title, int frameWidth, int frameHeight) {
+        setTitle(title);
         setSize(frameWidth, frameHeight);
         setLocation(0,0);
-        // Menu
-        addMenu(this);
-        //setup time
-        addBootTimeLable(this);
-        // text JPanel
-        addTimeLabelOfCenter(this);
+        initTimer();
     }
 
-    private void init(){
-        sysToolkit = Toolkit.getDefaultToolkit();
-        sysDimension = sysToolkit.getScreenSize();
-        frameHeight = sysDimension.height;
-        frameWidth = sysDimension.width;
+    private void initTimer(){
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         realTimeTimer = new Timer("second", false);
     }
@@ -41,7 +28,7 @@ public class TopLayout extends JFrame {
     public JMenuBar addMenu(JFrame jFrame) {
         jMenuBar = new JMenuBar();
         jFrame.setJMenuBar(jMenuBar);
-        jMenuBar.setSize(frameWidth, 20);
+        jMenuBar.setSize(jFrame.getSize().width, 20);
         //
         JMenu fileMenu = new JMenu("File");
         jMenuBar.add(fileMenu);

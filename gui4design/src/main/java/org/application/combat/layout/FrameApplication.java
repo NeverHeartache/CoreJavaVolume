@@ -7,6 +7,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import org.application.combat.constant.ApplicationConst;
 
+/**
+ * 全局应用框架
+ *
+ */
 public class FrameApplication {
 
     /**
@@ -28,8 +32,10 @@ public class FrameApplication {
      * 构造函数，初始化
      */
     public FrameApplication() {
-        jFrame = new TopLayout();
         toolkit = Toolkit.getDefaultToolkit();
+        int width = toolkit.getScreenSize().width;
+        int height = toolkit.getScreenSize().height;
+        jFrame = new TopLayout("Timeline", width, height);
         if (SystemTray.isSupported()) {
             systemTray = SystemTray.getSystemTray();
         }
