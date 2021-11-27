@@ -9,9 +9,10 @@ import org.application.combat.layout.FrameApplication;
  */
 public class ApplicationBoot {
 
-    private FrameApplication frameApplication;
+    public static FrameApplication frameApplication;
 
     public static void main(String[] args) {
-
+        frameApplication = new FrameApplication();
+        frameApplication.initFrame();
     }
 }

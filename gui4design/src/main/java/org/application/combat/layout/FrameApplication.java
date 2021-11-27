@@ -47,6 +47,8 @@ public class FrameApplication {
     public void initFrame() {
         EventQueue.invokeLater(() -> {
             jFrame.setVisible(true);
+            jFrame.initTimer();
+            jFrame.addTimeLabelOfCenter();
         });
     }
 

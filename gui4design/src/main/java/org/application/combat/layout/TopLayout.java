@@ -17,18 +17,17 @@ public class TopLayout extends JFrame {
         setTitle(title);
         setSize(frameWidth, frameHeight);
         setLocation(0,0);
-        initTimer();
     }
 
-    private void initTimer(){
+    public void initTimer(){
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         realTimeTimer = new Timer("second", false);
     }
 
-    public JMenuBar addMenu(JFrame jFrame) {
+    public JMenuBar addMenu() {
         jMenuBar = new JMenuBar();
-        jFrame.setJMenuBar(jMenuBar);
-        jMenuBar.setSize(jFrame.getSize().width, 20);
+        setJMenuBar(jMenuBar);
+        jMenuBar.setSize(getSize().width, 20);
         //
         JMenu fileMenu = new JMenu("File");
         jMenuBar.add(fileMenu);
@@ -40,9 +39,9 @@ public class TopLayout extends JFrame {
         return jMenuBar;
     }
 
-    public void addTimeLabelOfCenter(JFrame jFrame) {
+    public void addTimeLabelOfCenter() {
         JPanel botmJPanel = new JPanel();
-        jFrame.add(botmJPanel, BorderLayout.SOUTH);
+        add(botmJPanel, BorderLayout.SOUTH);
 
         JLabel timeLabel = new TimeLabel();
         botmJPanel.add(timeLabel);
