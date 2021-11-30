@@ -13,10 +13,10 @@ public class TopLayout extends JFrame {
     private static Timer realTimeTimer;
     private static TimerTask realTimeTimerTask;
 
-    public TopLayout(String title, int frameWidth, int frameHeight) {
+    public TopLayout(String title, Dimension dimension) {
         setTitle(title);
-        setSize(frameWidth, frameHeight);
-        setLocation(0,0);
+        setPreferredSize(dimension);
+        setLocationByPlatform(true);
     }
 
     public void initTimer(){
@@ -41,8 +41,8 @@ public class TopLayout extends JFrame {
 
     public void addTimeLabelOfCenter() {
         JPanel botmJPanel = new JPanel();
-        add(botmJPanel, BorderLayout.SOUTH);
-
+        add(botmJPanel, BorderLayout.NORTH);
+        pack();
         JLabel timeLabel = new TimeLabel();
         botmJPanel.add(timeLabel);
         timeLabel.setText(sdf.format(new Date()));
@@ -65,9 +65,9 @@ public class TopLayout extends JFrame {
 
         public void paintComponent(Graphics graphics) {
             Graphics2D graphics2D = (Graphics2D) graphics;
-            Font timeLabelFont = new Font("微软雅黑 Light", Font.BOLD, 18);
+            Font timeLabelFont = new Font("微软雅黑 Light", Font.BOLD, 28);
             graphics2D.setFont(timeLabelFont);
-            graphics2D.drawString(getText(), 160, 20);
+            graphics2D.drawString(getText(), 100, 50);
         }
 
         public Dimension getPreferredSize(){

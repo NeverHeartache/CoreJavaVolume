@@ -39,9 +39,8 @@ public class FrameApplication {
      */
     public FrameApplication() throws IOException {
         toolkit = Toolkit.getDefaultToolkit();
-        int width = toolkit.getScreenSize().width;
-        int height = toolkit.getScreenSize().height;
-        jFrame = new TopLayout("Timeline", width, height);
+        Dimension dimension = toolkit.getScreenSize();
+        jFrame = new TopLayout("Timeline", dimension);
         initTray(jFrame);
     }
 
@@ -51,6 +50,7 @@ public class FrameApplication {
     public void initFrame() {
         EventQueue.invokeLater(() -> {
             jFrame.setVisible(true);
+            jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             jFrame.initTimer();
             jFrame.addTimeLabelOfCenter();
             //  所有内容初始化完成之后，再进行框架定时任务；
