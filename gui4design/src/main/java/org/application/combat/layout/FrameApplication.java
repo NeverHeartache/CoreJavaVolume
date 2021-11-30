@@ -49,7 +49,6 @@ public class FrameApplication {
      */
     public void initFrame() {
         EventQueue.invokeLater(() -> {
-            jFrame.setVisible(true);
             jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             jFrame.initTimer();
             jFrame.addTimeLabelOfCenter();
