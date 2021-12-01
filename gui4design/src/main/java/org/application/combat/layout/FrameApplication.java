@@ -52,6 +52,7 @@ public class FrameApplication {
             jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             jFrame.initTimer();
             jFrame.addTimeLabelOfCenter();
+            jFrame.addImagePane();
             //  所有内容初始化完成之后，再进行框架定时任务；
             sheduleFrame(jFrame);
         });
