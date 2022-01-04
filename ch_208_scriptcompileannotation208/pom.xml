@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>scriptcompileannotation208</artifactId>
+    <artifactId>ch_208_scriptcompileannotation</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
