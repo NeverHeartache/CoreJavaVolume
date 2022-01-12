@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>org.corejavavolume</groupId>
-            <artifactId>scriptcompileannotation208</artifactId>
+            <artifactId>ch_208_scriptcompileannotation</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
