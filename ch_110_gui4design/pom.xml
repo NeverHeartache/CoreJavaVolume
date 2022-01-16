@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gui4design</artifactId>
+    <artifactId>ch_110_gui4design</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.corejavavolume</groupId>
