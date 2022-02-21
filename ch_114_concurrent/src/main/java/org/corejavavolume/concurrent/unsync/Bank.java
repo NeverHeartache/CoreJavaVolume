@@ -19,11 +19,10 @@ public class Bank {
      */
     public void transfer(int from, int to, double amount){
         if (accounts[from] < amount) return;
-        System.out.println(Thread.currentThread());
         accounts[from] -= amount;
-        System.out.printf("%10.2f from %d to %d."+System.lineSeparator(), amount, from, to);
+        System.out.printf(Thread.currentThread().getName() + " %10.2f from %d to %d."+System.lineSeparator(), amount, from, to);
         accounts[to] += amount;
-        System.out.printf("Total balance is : %10.2f%n"+System.lineSeparator(), getTotalBalance());
+        System.out.printf(Thread.currentThread().getName() + " Total balance is : %10.2f%n"+System.lineSeparator(), getTotalBalance());
     }
 
     public double getTotalBalance(){
