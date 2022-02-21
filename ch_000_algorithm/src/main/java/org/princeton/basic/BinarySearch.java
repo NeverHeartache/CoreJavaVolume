@@ -24,6 +24,7 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
+        if (args.length == 0) return;
         int[] whitelist = In.readInts(args[0]);
         Arrays.sort(whitelist);
         while (!StdIn.isEmpty()) {
