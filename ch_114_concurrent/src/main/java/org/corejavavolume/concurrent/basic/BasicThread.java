@@ -16,10 +16,12 @@ class SyncronizedBlock {
     private Object lock = new Object();
     public void blockTest() {
         String threadName = Thread.currentThread().getName();
-        System.out.println(threadName + "This is unsync code.(非同步代码)");
+        System.out.println(threadName + " This is unsync code.(非同步代码)");
         synchronized(lock) {
-            System.out.println(threadName + " : This is sync code.（同步代码）");
+            System.out.println(threadName + " : This is sync code.（同步代码我恁爹）");
+            System.out.println(threadName + " : This is sync code.（同步代码我恁爹）");
+            System.out.println(threadName + " : This is sync code.（同步代码我恁爹）");
         }
-        System.out.println(threadName + "This is unsync code.（非同步代码）");
+        System.out.println(threadName + " This is unsync code.（非同步代码）");
     }
 }
