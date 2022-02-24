@@ -1,5 +1,7 @@
 package org.corejavavolume.concurrent.basic;
 
+import java.util.Vector;
+
 public class BasicThread {
     public static void main(String[] args) {
         Runnable r = () -> {
@@ -10,6 +12,7 @@ public class BasicThread {
             Thread t = new Thread(r);
             t.start();
         }
+        Vector vector = new Vector();
     }
 }
 class SyncronizedBlock {
