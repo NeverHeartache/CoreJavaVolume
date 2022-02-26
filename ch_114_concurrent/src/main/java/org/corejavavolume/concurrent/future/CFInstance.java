@@ -10,13 +10,9 @@ import java.util.concurrent.*;
 public class CFInstance {
     private Callable<Integer> callable;
     private Future<Integer> future;
-    private Executor executor;
+    static Executor executor = Executors.newCachedThreadPool();
 
     public CFInstance() {
-    }
-
-    public void init() {
-        executor = Executors.newCachedThreadPool();
     }
 
     public static void main(String[] args) {
@@ -29,8 +25,11 @@ public class CFInstance {
 
             MatchCounter matchCounter = new MatchCounter(new File(directory), keyword);
             FutureTask<Integer> task = new FutureTask<>(matchCounter);
-            Thread t = new Thread(task);
-            t.start();
+//            Thread t = new Thread(task);
+//            t.start();
+
+            CFInstance.executor.execute(task);
+
 
             try {
                 System.out.println(task.get() + " matching files.");
@@ -63,8 +62,9 @@ class MatchCounter implements Callable<Integer> {
                 MatchCounter counter = new MatchCounter(file, keyword);
                 FutureTask<Integer> task = new FutureTask<>(counter);
                 results.add(task);
-                Thread t = new Thread(task);
-                t.start();
+//                Thread t = new Thread(task);
+//                t.start();
+                CFInstance.executor.execute(task);
             } else {
                 if (search(file)) count++;
             }

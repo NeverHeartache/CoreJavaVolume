@@ -3,7 +3,7 @@ package org.corejavavolume.concurrent.blockingqueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * 生产者线程集
+ * 生产者线程集，负责往阻塞线程中添加元素
  */
 public class ProduceThreads {
     private final int I_ZH_ZYXMKXZFSQ = 100;
@@ -12,9 +12,9 @@ public class ProduceThreads {
         return thread.getName();
     }
 
-    public void madeSomeThreads(){
+    public void produceThreads(){
         Runnable r = () -> {
-            ProduceThreads  produceThreads = new ProduceThreads();
+
         };
     }
 }
