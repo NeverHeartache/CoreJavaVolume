@@ -2,7 +2,6 @@ package org.corejavavolume.concurrent.future;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -86,7 +85,10 @@ class MatchCounter implements Callable<Integer> {
             boolean found = false;
             while (!found && sc.hasNextLine()) {
                 String line = sc.nextLine();
-                if (line.contains(keyword)) found = true;
+                if (line.contains(keyword)){
+                    System.out.println(file.getPath() + " -- " + file.getName());
+                    found = true;
+                }
             }
             return found;
         } catch (FileNotFoundException e) {
