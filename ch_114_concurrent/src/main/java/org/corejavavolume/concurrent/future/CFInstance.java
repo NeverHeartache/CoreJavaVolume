@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
+/**
+ * @Description 指定某个目录，列出该目录下所有文件夹和文件
+ * 遍历所有文件夹下的所有文件，查询文件当中是否含有指定的“关键词”，如果文件当中有，则计数器加一
+ * 然后
+ */
 public class CFInstance {
     private Callable<Integer> callable;
     private Future<Integer> future;
