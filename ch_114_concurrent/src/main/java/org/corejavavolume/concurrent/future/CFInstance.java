@@ -25,11 +25,8 @@ public class CFInstance {
 
             MatchCounter matchCounter = new MatchCounter(new File(directory), keyword);
             FutureTask<Integer> task = new FutureTask<>(matchCounter);
-//            Thread t = new Thread(task);
-//            t.start();
-
-            CFInstance.executor.execute(task);
-
+            Thread t = new Thread(task);
+            t.start();
 
             try {
                 System.out.println(task.get() + " matching files.");
@@ -62,9 +59,8 @@ class MatchCounter implements Callable<Integer> {
                 MatchCounter counter = new MatchCounter(file, keyword);
                 FutureTask<Integer> task = new FutureTask<>(counter);
                 results.add(task);
-//                Thread t = new Thread(task);
-//                t.start();
-                CFInstance.executor.execute(task);
+                Thread t = new Thread(task);
+                t.start();
             } else {
                 if (search(file)) count++;
             }
