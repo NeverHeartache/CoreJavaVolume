@@ -7,9 +7,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
+/**
+ * @decription 首先递归查询所有路径
+ * 然后递交
+ *
+ */
 public class SortedThreadPoolTest {
     static int callableListSize = 0;
     public static void main(String[] args) {
+        SortedThreadPoolTest sortedThreadPoolTest = new SortedThreadPoolTest();
         List<Callable<Integer>> futures = new ArrayList<>();
         try (Scanner in = new Scanner(System.in)) {
             System.out.println("Enter base directory (e.g. E:\\src\\java\\lang):");
@@ -19,12 +25,16 @@ public class SortedThreadPoolTest {
 
             ExecutorService executorService = Executors.newCachedThreadPool();
             ExecutorCompletionService executorCompletionService = new ExecutorCompletionService(executorService);
-            SortedMatchCounter matchCounter = new SortedMatchCounter(new File(directory), keyword, futures);
-            executorCompletionService.submit(matchCounter);
+            List<File> directoryList = sortedThreadPoolTest.recursiveQueries(new File(directory));
 
             try {
                 int temp = 0;
-                for (int i=0; i < futures.size(); i++) {
+                for (int i=0; i < directoryList.size(); i++) {
+                    SortedMatchCounter matchCounter = new SortedMatchCounter(directoryList.get(i), keyword, futures);
+                    executorCompletionService.submit(matchCounter);//
+                }
+
+                for (int j = 0; j < directoryList.size(); j++) {
                     temp += (int) executorCompletionService.take().get();
                 }
                 System.out.println("result.get() is : "+ temp);
@@ -36,6 +46,18 @@ public class SortedThreadPoolTest {
                 executorService.shutdown();
             }
         }
+    }
+
+    public List<File> recursiveQueries(File directory) {
+        File[] filse = directory.listFiles();
+        List<File> directoryList = new ArrayList<>();
+        directoryList.add(directory);
+        for (File file: filse) {
+            if (file.isDirectory()) {
+                directoryList.add(file);
+            }
+        }
+        return directoryList;
     }
 }
 class SortedMatchCounter implements Callable<Integer> {
@@ -58,16 +80,15 @@ class SortedMatchCounter implements Callable<Integer> {
         this.futures = futures;
     }
 
+
+
     @Override
     public Integer call() throws Exception {
         count = 0;
         try {
             File[] filse = directory.listFiles();
             for (File file : filse) {
-                if (file.isDirectory()) {
-                    SortedMatchCounter counter = new SortedMatchCounter(file, keyword, futures);
-                    futures.add(counter);
-                } else {
+                if (!file.isDirectory()) {
                     if (search(file)) count++;
                 }
             }
