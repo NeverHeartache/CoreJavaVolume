@@ -18,6 +18,7 @@
         <module>ch_106_InterfaceLambdaInnerClass</module>
         <module>ch_105_inherited</module>
         <module>ch_208_scriptcompileannotation</module>
+        <module>ch_204_network</module>
     </modules>
 
     <properties>
