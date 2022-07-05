@@ -19,6 +19,7 @@
         <module>ch_105_inherited</module>
         <module>ch_208_scriptcompileannotation</module>
         <module>ch_204_network</module>
+        <module>ch_201_streamlib</module>
     </modules>
 
     <properties>
