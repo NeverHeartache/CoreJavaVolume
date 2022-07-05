@@ -1,4 +1,4 @@
-package org.princeton.basic;
+package org.princeton.basic.chapter1_1;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
