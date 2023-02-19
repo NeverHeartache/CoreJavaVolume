@@ -2,10 +2,31 @@ import java.util.UUID;
 
 public class RandomUUID {
     public static void main(String[] args) {
+        //
+        RandomUUID id = new RandomUUID();
+        System.out.println("获取到的结果为：" + id.test().b);
         for (int i = 0; i < 4; i++) {
             String uuidStr = UUID.randomUUID().toString();
             System.out.println(uuidStr);
             System.out.println(uuidStr.length());
+        }
+    }
+    class Org {
+        int x = 1;
+        int b = 0;
+    }
+    private Org test() {
+
+        Org org = new Org();
+        int x= 1;
+        try{
+            return org;
+        } finally {
+            ++org.b;
+            ++org.b;
+            ++org.b;
+            ++org.b;
+            ++org.b;
         }
     }
 }
