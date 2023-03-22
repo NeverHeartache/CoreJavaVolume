@@ -20,6 +20,7 @@
         <module>ch_208_scriptcompileannotation</module>
         <module>ch_204_network</module>
         <module>ch_201_streamlib</module>
+        <module>ch_104_objectclass</module>
     </modules>
 
     <properties>
